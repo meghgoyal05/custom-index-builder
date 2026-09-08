@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Custom Index Builder</title>
+<link rel="stylesheet" href="style.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="app">
+  <header class="app-header">
+    <h1>Custom Index Builder</h1>
+    <p class="subtitle">Build a dummy equity index and compute its Price Return over time.</p>
+  </header>
+
+  <main class="layout">
+    <section class="panel controls">
+      <h2>1. Select stocks</h2>
+      <div class="universe-toolbar">
+        <input id="search" type="text" placeholder="Filter by ticker, name, or sector..." />
+        <div class="toolbar-buttons">
+          <button id="selectAllBtn" type="button" class="link-btn">Select all</button>
+          <button id="clearAllBtn" type="button" class="link-btn">Clear</button>
+        </div>
+      </div>
+      <div id="universeList" class="universe-list">Loading universe...</div>
+
+      <h2>2. Weighting method</h2>
+      <div class="weighting-options">
+        <label><input type="radio" name="weighting" value="equal" checked /> Equal weight</label>
+        <label><input type="radio" name="weighting" value="market_cap" /> Market-cap weight</label>
+        <label><input type="radio" name="weighting" value="custom" /> Custom weight</label>
+      </div>
+      <div id="customWeights" class="custom-weights hidden"></div>
+
+      <h2>3. Date range</h2>
+      <div class="date-range">
+        <label>Start <input type="date" id="startDate" /></label>
+        <label>End <input type="date" id="endDate" /></label>
+      </div>
+      <p id="availableRange" class="hint"></p>
+
+      <button id="generateBtn" class="primary-btn">Generate</button>
+      <div id="errorBox" class="error-box hidden"></div>
+      <div id="warningBox" class="warning-box hidden"></div>
+    </section>
+
+    <section class="panel results">
+      <h2>Price Return Index</h2>
+      <canvas id="indexChart" height="120"></canvas>
+
+      <div id="summaryCards" class="summary-cards hidden">
+        <div class="card">
+          <span class="label">Cumulative return</span>
+          <span id="cumReturn" class="value">--</span>
+        </div>
+        <div class="card">
+          <span class="label">Annualized return</span>
+          <span id="annReturn" class="value">--</span>
+        </div>
+        <div class="card">
+          <span class="label">Annualized volatility</span>
+          <span id="annVol" class="value">--</span>
+        </div>
+      </div>
+
+      <div id="weightsTableWrap" class="hidden">
+        <h3>Applied weights</h3>
+        <table id="weightsTable">
+          <thead><tr><th>Ticker</th><th>Weight</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
