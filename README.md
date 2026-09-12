@@ -173,3 +173,6 @@ This repo was built with incremental commits and a feature branch:
 3. `feature/web-app` merged back into `master`.
 
 Run `git log --oneline --graph --all` to see the full history.
+
+
+![Custom Index Builder Screenshot] (https://github.com/meghgoyal05/custom-index-builder/blob/7c3f3e4e296bfcde22ed4ded9af81c68ebdf6474/App-screenshot.PNG)
